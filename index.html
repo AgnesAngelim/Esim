@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel de Chamados</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐋</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -67,7 +67,7 @@
       <section id="tabNovo">
         <div class="card card-pad">
           <h2 class="section-title">Abrir novo chamado</h2>
-          <p class="section-sub">Preencha os dados do bloqueio. O chamado cai direto no painel de acompanhamento.</p>
+          <p class="section-sub">Preencha os dados necessários.</p>
           <form id="ticketForm">
             <div class="field">
               <label for="fId">ID do licenciado</label>
@@ -92,7 +92,7 @@
           </form>
         </div>
 
-        <div style="margin-top:26px">
+        <div style="margin: 26px 0;">
           <h3 class="section-title" style="font-size:15px;">Seus últimos chamados</h3>
           <div id="myHistory" class="mini-history"></div>
         </div>
@@ -100,6 +100,9 @@
 
       <!-- ---- TAB: CHAMADOS ---- -->
       <section id="tabChamados" class="hidden">
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Buscar por ID, licenciado, descrição ou quem abriu…">
+        </div>
         <div class="filters" id="filters">
           <button class="filter-chip active" data-status="todos">Todos <span class="count" id="cAll">0</span></button>
           <button class="filter-chip" data-status="aberto">Em aberto <span class="count" id="cAberto">0</span></button>
@@ -110,12 +113,12 @@
       </section>
     </main>
 
-    <footer>Sistema interno de chamados · dados armazenados no Firebase</footer>
+    <footer>Agnes Angelim</footer>
   </div>
 </div>
 
 <div class="toast-stack" id="toastStack"></div>
 
-<script type="module" src="script.js?v=5"></script>
+<script type="module" src="script.js?v=6"></script>
 </body>
 </html>
