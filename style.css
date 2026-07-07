@@ -1,5 +1,5 @@
 :root{
-  --bg:#EDEFEF;
+  --bg:#e4e8e8bf;
   --surface:#FFFFFF;
   --surface-2:#F6F7F7;
   --ink:#1B2430;
@@ -139,6 +139,12 @@ textarea{resize:vertical;min-height:80px;}
 .progress > div{height:100%;background:var(--analise);width:0%;transition:width .2s;}
 
 /* ---------- Filters / list ---------- */
+.search-wrap{margin-bottom:14px;}
+.search-wrap input{
+  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:8px;
+  font-size:14px;color:var(--ink);background:var(--surface);box-shadow:var(--shadow);
+}
+.search-wrap input:focus{outline:2px solid var(--primary-light);outline-offset:1px;}
 .filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .filter-chip{
   padding:7px 13px;border-radius:20px;border:1px solid var(--line);background:var(--surface);
@@ -165,7 +171,7 @@ textarea{resize:vertical;min-height:80px;}
 .ticket.is-highlight .ticket-head{position:relative;}
 .ticket.is-highlight .ticket-head::before{
   content:"📌 PARA VOCÊ";
-  position:absolute;top:-11px;left:16px;background:var(--aberto);color:#fff;
+  position:absolute;top:-11px;left: 750px;background:var(--aberto);color:#fff;
   font-size:10px;font-weight:700;letter-spacing:.4px;padding:2px 8px;border-radius:20px;
 }
 .ticket-desc{padding:8px 20px 0;font-size:14px;color:var(--ink);line-height:1.5;}
