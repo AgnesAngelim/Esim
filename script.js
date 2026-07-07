@@ -1,8 +1,3 @@
-/* =========================================================================
-   CONFIGURAÇÃO DO FIREBASE
-   Troque os valores abaixo pelos dados do SEU projeto Firebase.
-   Veja o README.md para o passo a passo completo.
-   ========================================================================= */
 const firebaseConfig = {
   apiKey: "AIzaSyCiyrnmMGL_ZG7Gn1sij5lwMvyV1BT3Tu8",
   authDomain: "chamados-esim.firebaseapp.com",
@@ -74,6 +69,7 @@ function toast(title, body, kind="aberto"){
 let currentUser = null;
 let currentUserProfile = null;
 let activeFilter = "todos";
+let searchTerm = "";
 let allTickets = [];
 let unreadCount = 0;
 let uploadedEvidence = null; // {url, tipo}
@@ -356,7 +352,14 @@ function renderTickets(){
   $("cAnalise").textContent = counts.analise;
   $("cFeito").textContent = counts.feito;
 
-  const filtered = activeFilter === "todos" ? allTickets : allTickets.filter(t=>t.status===activeFilter);
+  const porStatus = activeFilter === "todos" ? allTickets : allTickets.filter(t=>t.status===activeFilter);
+  const termo = searchTerm.trim().toLowerCase();
+  const filtered = !termo ? porStatus : porStatus.filter(t=>
+    (t.idLicenciado||"").toLowerCase().includes(termo) ||
+    (t.nomeLicenciado||"").toLowerCase().includes(termo) ||
+    (t.descricao||"").toLowerCase().includes(termo) ||
+    (t.criadoPor?.nome||"").toLowerCase().includes(termo)
+  );
   const list = $("ticketList");
   if(filtered.length === 0){
     list.innerHTML = `<div class="card empty"><div class="glyph">🗒️</div>Nenhum chamado encontrado.</div>`;
@@ -501,6 +504,12 @@ function renderMyHistory(){
   el.innerHTML = mine.map(t=>ticketCard(t)).join("");
   attachCardHandlers();
 }
+
+/* ---------------- BUSCA ---------------- */
+$("searchInput").addEventListener("input", (e)=>{
+  searchTerm = e.target.value;
+  renderTickets();
+});
 
 /* ---------------- FILTROS ---------------- */
 document.querySelectorAll(".filter-chip").forEach(chip=>{
